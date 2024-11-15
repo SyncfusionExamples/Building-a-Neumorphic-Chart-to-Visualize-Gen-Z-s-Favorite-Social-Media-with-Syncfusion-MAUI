@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:GenZFavouriteSocialMedia"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:switch="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+             x:Class="GenZFavouriteSocialMedia.MainPage"
+             Background="{AppThemeBinding Dark='#212121'}">
+
+    <ContentPage.BindingContext>
+        <local:SocialMediaAppInfo/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+
+        <LinearGradientBrush x:Key="LightTitleBackground" EndPoint="0,1">
+            <GradientStop Color="#F8FAFD" Offset="0.2"/>
+            <GradientStop Color="#E6E9F3" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="DarkTitleBackground"  EndPoint="0,1">
+            <GradientStop Color="#1E2023" Offset="0.1"/>
+            <GradientStop Color="#2A2D32" Offset="0.2"/>
+            <GradientStop Color="#2C2F34" Offset="0.5"/>
+            <GradientStop Color="#2D3238" Offset="0.8"/>
+            <GradientStop Color="#333B45" Offset="1.0"/>
+        </LinearGradientBrush>
+        
+        <LinearGradientBrush x:Key="LightSeriesBluishGradient" EndPoint="1,0">
+            <GradientStop Color="#D7DEED" Offset="0.1"/>
+            <GradientStop Color="#E1E4F1" Offset="0.3"/>
+            <GradientStop Color="#E3E7F2" Offset="0.5"/>
+            <GradientStop Color="#E3E7F3" Offset="0.7"/>
+            <GradientStop Color="#EEF0F6" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="DarkSeriesGradient" EndPoint="1,0">
+            <GradientStop Color="#0B0C0E" Offset="0.1"/>
+            <GradientStop Color="#1F2225" Offset="0.3"/>
+            <GradientStop Color="#2C2E33" Offset="0.5"/>
+            <GradientStop Color="#353D48" Offset="0.7"/>
+            <GradientStop Color="#383F4C" Offset="1.0"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="DarkPurpleSeriesGradient" EndPoint="1,0">
+            <GradientStop Color="#7000B2" Offset="0.0" />
+            <GradientStop Color="#8200DB" Offset="0.2" />
+            <GradientStop Color="#9100FF" Offset="0.4" />
+            <GradientStop Color="#A82FFF" Offset="0.7" />
+            <GradientStop Color="#E0A3FF" Offset="1.0" />
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="DarkPurpleTitleGradient" EndPoint="0,1">
+            <GradientStop Color="#8200DB" Offset="0.0" />
+            <GradientStop Color="#9100FF" Offset="0.5" />
+            <GradientStop Color="#D580FF" Offset="1.0" />
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="LightSeriesBackground" StartPoint="0,0" EndPoint="1,0">
+            <GradientStop Color="#BABCC7" Offset="0.1" />
+            <GradientStop Color="#D7DEED" Offset="0.5"/>
+            <GradientStop Color="#E1E4F1" Offset="0.6"/>
+            <GradientStop Color="#E3E7F2" Offset="0.7"/>
+            <GradientStop Color="#E3E7F3" Offset="0.8"/>
+            <GradientStop Color="#D7DEED" Offset="1.0" />
+        </LinearGradientBrush>
+
+        <local:SfNeumorphismDrawer x:Name="outer" Padding="30" Background="{AppThemeBinding Light='#EBECF0', Dark='#212121'}" Stroke="{AppThemeBinding Light='#F8FAFD', Dark='#6E00B0'}" StrokeWidth="5" ShadowColor="{AppThemeBinding Light=Gray,Dark='#40000066'}" ShadowOffset="5,5" CornerRadius="20" ShadowBlur="5" x:Key="outerView"/>
+        <local:SfNeumorphismDrawer x:Name="title" Padding="5,5,5,5" Background="{AppThemeBinding Light={StaticResource LightTitleBackground},Dark={StaticResource DarkTitleBackground}}" ShadowColor="{AppThemeBinding Light=Gray,Dark='#101113'}" Stroke="{AppThemeBinding Light='#F8FAFD', Dark='#252E3D'}" StrokeWidth="{AppThemeBinding Light=2,Dark=1}" ShadowOffset="{AppThemeBinding Light='2,2',Dark='1,1'}" CornerRadius="12" ShadowBlur="5" x:Key="titleView"/>
+        <local:SfNeumorphismDrawer x:Name="column" Background="{AppThemeBinding Light={StaticResource LightSeriesBackground},Dark={StaticResource DarkSeriesGradient}}" CornerRadius="25" StrokeWidth="0" x:Key="columndrawer"/>
+    </ContentPage.Resources>
+
+    <local:SfNeumorphicContentView Drawable="{StaticResource outerView}">
+        <Grid Margin="{Binding Padding, Source={x:Reference outer}}">
+            
+            <AbsoluteLayout VerticalOptions="Start" Margin="0,15,5,0" HeightRequest="40">
+                <local:SfNeumorphicContentView AbsoluteLayout.LayoutBounds="1,0" AbsoluteLayout.LayoutFlags="PositionProportional" WidthRequest="150" HeightRequest="40" Drawable="{StaticResource titleView}">
+                    <switch:SfButton Text="Change Theme" TextColor="{AppThemeBinding Dark='#FFFFFF',Light='#0B0F41'}" FontFamily="InterMedium" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" FontSize="12"  Margin="{Binding Padding, Source={x:Reference title}}" Clicked="SfButton_Clicked" Background="Transparent"/>
+                </local:SfNeumorphicContentView>
+            </AbsoluteLayout>
+
+            <chart:SfCartesianChart Grid.Row="0" Margin="{OnPlatform WinUI='20,10,20,20',MacCatalyst='20,10,20,20',Android='5,0,5,0',iOS='5,0,5,0'}" InputTransparent="True">
+                <chart:SfCartesianChart.Title>
+                    <HorizontalStackLayout HorizontalOptions="Start" Margin="0,5,0,0">
+                        <local:SfNeumorphicContentView Drawable="{StaticResource titleView}"
+                                                     HeightRequest="{OnPlatform Android='50',iOS='50',Default='65'}"
+                                                     WidthRequest="{OnPlatform Android='50',iOS='50',Default='65'}">
+                            <Path Data="M24.5,10.899994L27.7,10.899994C30.099999,10.899994,32,12.799993,32,15.199992L32,20.799989 24.599999,20.799989 24.599999,15.299992C24.599999,13.699993 24,
+                                  12.299994 23.099999,11.099994 23.599999,10.999995 24.099999,10.899994 24.5,10.899994z M4.3000002,10.899994L7.5,10.899994C7.7999997,10.899994 8.1999998,10.899994 8.5,
+                                  10.999995 7.5,12.199994 6.8999996,13.699993 6.8999996,15.299992L6.8999996,20.799989 0,20.799989 0,15.199992C0,12.799993,1.8999996,10.899994,4.3000002,
+                                  10.899994z M13.7,9.7999949L17.8,9.7999949C20.9,9.7999949,23.4,12.299994,23.4,15.399992L23.4,22.699988 8.0999999,22.699988 8.0999999,15.399992C8.0999999,
+                                  12.299994,10.6,9.7999949,13.7,9.7999949z M26.2,3.3999987C28.099999,3.3999987 29.7,4.9999981 29.7,6.8999968 29.7,8.7999954 28.099999,10.399995 26.2,10.399995 24.3,
+                                  10.399995 22.7,8.7999954 22.7,6.8999968 22.7,4.9999981 24.3,3.3999987 26.2,3.3999987z M6,3.3999987C7.8999996,3.3999987 9.5,4.9999981 9.5,6.8999968 9.5,8.7999954 7.8999996,
+                                  10.399995 6,10.399995 4.0999994,10.399995 2.5,8.7999954 2.5,6.8999968 2.5,4.9999981 4.0999994,3.3999987 6,3.3999987z M15,0L15.2,0 15.4,0 15.6,0 15.9,0 16.1,
+                                  0 16.3,0 16.5,0 16.7,0C16.8,0 16.8,0 16.9,0.10000038 17,0.19999981 17,0.10000038 17.1,0.19999981 17.2,0.30000019 17.2,0.19999981 17.3,0.30000019 17.4,0.30000019 17.4,
+                                  0.40000057 17.5,0.40000057 17.6,0.40000057 17.6,0.5 17.7,0.5 17.8,0.5 17.8,0.60000038 17.9,0.60000038 18,0.60000038 18,0.69999981 18.1,0.69999981 18.2,0.69999981 18.2,
+                                  0.80000019 18.3,0.80000019 18.4,0.80000019 18.4,0.89999962 18.5,0.89999962 18.6,0.89999962 18.6,1 18.7,1 18.8,1 18.8,1.0999994 18.9,1.0999994 19,1.0999994 19,
+                                  1.1999998 19.1,1.2999992L19.3,1.5C19.3,1.5999994 19.4,1.5999994 19.4,1.6999998 19.4,1.7999992 19.5,1.7999992 19.5,1.8999996 19.5,1.999999 19.6,1.999999 19.6,
+                                  2.0999994 19.6,2.1999989 19.7,2.1999989 19.7,2.2999992 19.7,2.3999987 19.8,2.3999987 19.8,2.499999 19.8,2.5999985 19.9,2.5999985 19.9,2.6999989 19.9,2.7999992 20,
+                                  2.7999992 20,2.8999987 20,2.999999 20.1,2.999999 20.1,3.0999985 20.1,3.1999989 20.1,3.1999989 20.2,3.2999983 20.3,3.3999987 20.2,3.3999987 20.3,3.4999981 20.3,
+                                  3.5999985 20.3,3.5999985 20.4,3.6999979L20.4,3.8999987 20.4,4.0999985 20.4,4.2999983 20.4,4.4999981 20.4,4.6999979 20.4,4.8999977 20.4,5.0999975 20.4,5.2999973C20.4,
+                                  5.3999977 20.4,5.3999977 20.3,5.4999971 20.3,5.5999975 20.3,5.5999975 20.2,5.6999969 20.1,5.7999973 20.2,5.7999973 20.1,5.8999968 20.1,5.9999971 20,5.9999971 20,
+                                  6.0999975 20,6.1999969 19.9,6.1999969 19.9,6.2999973 19.9,6.3999968 19.8,6.3999968 19.8,6.4999971 19.8,6.5999966 19.7,6.5999966 19.7,6.6999969 19.7,6.7999969 19.6,
+                                  6.7999969 19.6,6.8999968 19.6,6.9999967 19.5,6.9999967 19.5,7.0999966 19.5,7.1999965 19.4,7.1999965 19.4,7.2999964 19.4,7.3999963 19.3,7.3999963 19.3,7.4999962 19.3,
+                                  7.5999961 19.2,7.5999961 19.1,7.699996 19,7.7999964 19,7.7999964 18.9,7.8999963 18.8,7.9999962 18.8,7.9999962 18.8,7.9999962 18.7,7.9999962 18.7,8.0999961 18.6,8.0999961 18.5,
+                                  8.0999961 18.5,8.199996 18.4,8.199996 18.3,8.199996 18.3,8.2999959 18.2,8.2999959 18.1,8.2999959 18.1,8.3999958 18,8.3999958 17.9,8.3999958 17.9,8.4999957 17.8,8.4999957 17.7,
+                                  8.4999957 17.7,8.5999956 17.6,8.5999956 17.5,8.5999956 17.5,8.6999955 17.4,8.6999955 17.3,8.6999955 17.3,8.6999955 17.2,8.7999954 17.1,8.8999953 17.1,8.7999954 17,
+                                  8.8999953 16.9,8.9999957 16.9,8.9999957 16.8,8.9999957L16.6,8.9999957 16.4,8.9999957 16.2,8.9999957 16,8.9999957 15.8,8.9999957 15.6,8.9999957 15.4,8.9999957 15,
+                                  8.9999957C14.9,8.9999957 14.9,8.9999957 14.8,8.8999953 14.7,8.7999954 14.7,8.8999953 14.6,8.7999954 14.5,8.7999954 14.5,8.7999954 14.4,8.6999955 14.3,8.5999956 14.3,
+                                  8.5999956 14.2,8.5999956 14.1,8.5999956 14,8.6999955 13.9,8.5999956 13.8,8.4999957 13.8,8.4999957 13.7,8.4999957 13.6,8.4999957 13.6,8.3999958 13.5,8.3999958 13.4,8.3999958 13.4,
+                                  8.2999959 13.3,8.2999959 13.2,8.2999959 13.2,8.199996 13.1,8.199996 13,8.199996 13.1,8.0999961 13,7.9999962 13,7.9999962 12.9,7.9999962 12.8,7.8999963 12.7,7.7999964 12.7,
+                                  7.7999964 12.6,7.699996 12.5,7.5999961 12.5,7.5999961 12.4,7.4999962 12.4,7.3999963 12.3,7.3999963 12.3,7.2999964 12.3,7.1999965 12.2,7.1999965 12.2,7.0999966 12.2,6.9999967 12.1,
+                                  6.9999967 12.1,6.8999968 12.1,6.9999967 12,6.9999967 12,6.8999968 12,6.7999969 11.9,6.7999969 11.9,6.6999969 11.9,6.5999966 11.8,6.5999966 11.8,6.4999971 11.8,6.3999968 11.7,6.3999968 11.7,
+                                  6.2999973 11.7,6.1999969 11.6,6.1999969 11.6,6.0999975 11.6,5.9999971 11.6,5.9999971 11.5,5.8999968 11.4,5.7999973 11.5,5.7999973 11.4,5.6999969 11.4,5.5999975 11.4,5.5999975 11.3,
+                                  5.4999971L11.3,5.2999973 11.3,5.0999975 11.3,4.8999977 11.3,4.6999979 11.3,4.4999981 11.3,4.2999983 11.3,4.0999985 11.3,3.8999987C11.3,3.7999983 11.3,3.7999983 11.4,3.6999979 11.4,
+                                  3.5999985 11.4,3.5999985 11.5,3.4999981 11.6,3.3999987 11.5,3.3999987 11.6,3.2999983 11.6,3.1999989 11.7,3.1999989 11.7,3.0999985 11.7,2.999999 11.8,2.999999 11.8,2.8999987 11.8,
+                                  2.7999992 11.9,2.7999992 11.9,2.6999989 11.9,2.5999985 12,2.5999985 12,2.499999 12,2.3999987 12.1,2.3999987 12.1,2.2999992 12.1,2.1999989 12.2,2.1999989 12.2,2.0999994 12.2,
+                                  1.999999 12.3,1.999999 12.3,1.8999996 12.3,1.7999992 12.4,1.7999992 12.4,1.6999998 12.4,1.5999994 12.5,1.5999994 12.6,1.5 12.7,1.3999996 12.7,1.3999996 12.8,1.2999992 12.9,
+                                  1.0999994 13,1.0999994 13,1 13.1,1 13.1,0.89999962 13.2,0.89999962 13.3,0.89999962 13.3,0.80000019 13.4,0.80000019 13.5,0.80000019 13.5,0.69999981 13.6,0.69999981 13.7,
+                                  0.69999981 13.7,0.60000038 13.8,0.60000038 13.9,0.60000038 13.9,0.5 14,0.5 14.1,0.5 14.1,0.40000057 14.2,0.40000057 14.3,0.40000057 14.3,0.30000019 14.4,0.30000019 14.5,
+                                  0.30000019 14.5,0.30000019 14.6,0.19999981 14.7,0.19999981 14.7,0.19999981 14.8,0.10000038 14.9,0 14.9,0.10000038 15,0z" Fill="{AppThemeBinding Light='#4D568D',Dark='#C0C0C0'}"
+                                  HeightRequest="{OnPlatform Android='20',iOS='20', Default='25'}" WidthRequest="{OnPlatform Android='20',iOS='20',Default='35'}" 
+                                  Margin="{Binding Padding, Source={x:Reference title}}" Aspect="Uniform" HorizontalOptions="Center" VerticalOptions="Center">
+                            </Path>
+                        </local:SfNeumorphicContentView>
+                        <VerticalStackLayout VerticalOptions="Center">
+                            <Label Padding="5,5,0,0" Text="Neumorphic Design: Gen Z’s Favorite Social Media Platforms" FontSize="{OnPlatform Android=12,Default=16,iOS=12}" TextColor="{AppThemeBinding Light='#0B0F41', Dark='#EEEEEE'}" FontFamily="RobotoMedium"/>
+                            <Label Padding="5,0,0,5" Text="Explore a sleek Neumorphic design highlighting Gen Z’s favorite social media platforms, based on U.S. adult usage statistics" FontSize="{OnPlatform Android=10,Default=12,iOS=10}" TextColor="{AppThemeBinding Light='#4D568D', Dark='#C0C0C0'}" FontFamily="RobotoMedium" Margin="0,2,0,0"/>
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+
+
+                </chart:SfCartesianChart.Title>
+
+                <chart:SfCartesianChart.XAxes>
+                    <chart:CategoryAxis ShowMajorGridLines="False" LabelPlacement="BetweenTicks">
+                        <chart:CategoryAxis.AxisLineStyle>
+                            <chart:ChartLineStyle StrokeWidth="0"/>
+                        </chart:CategoryAxis.AxisLineStyle>
+                        <chart:CategoryAxis.MajorTickStyle>
+                            <chart:ChartAxisTickStyle StrokeWidth="0"/>
+                        </chart:CategoryAxis.MajorTickStyle>
+                        <chart:CategoryAxis.LabelStyle>
+                            <chart:ChartAxisLabelStyle TextColor="{AppThemeBinding Light='#0B0F41', Dark='#EEEEEE'}" FontSize="{OnPlatform Android=11,iOS=11}" FontFamily="InterMedium"/>
+                        </chart:CategoryAxis.LabelStyle>
+                    </chart:CategoryAxis>
+                </chart:SfCartesianChart.XAxes>
+
+                <chart:SfCartesianChart.YAxes>
+                    <chart:NumericalAxis ShowMajorGridLines="False" PlotOffsetEnd="10" Maximum="100" Minimum="0" Interval="20" EdgeLabelsDrawingMode="Shift" EdgeLabelsVisibilityMode="AlwaysVisible" IsVisible="True">
+                        <chart:NumericalAxis.AxisLineStyle>
+                            <chart:ChartLineStyle StrokeWidth="0"/>
+                        </chart:NumericalAxis.AxisLineStyle>
+                        <chart:NumericalAxis.MajorTickStyle>
+                            <chart:ChartAxisTickStyle StrokeWidth="0"/>
+                        </chart:NumericalAxis.MajorTickStyle>
+                        <chart:NumericalAxis.LabelStyle>
+                            <chart:ChartAxisLabelStyle LabelFormat="0'%" TextColor="{AppThemeBinding Light='#0B0F41', Dark='#EEEEEE'}" FontSize="{OnPlatform Android=9,iOS=9}" FontFamily="InterMedium"/>
+                        </chart:NumericalAxis.LabelStyle>
+                    </chart:NumericalAxis>
+                </chart:SfCartesianChart.YAxes>
+
+                <local:SfNeumorphismColumnSeries x:Name="columnSeries" Drawable="{StaticResource columndrawer}" Fill="{AppThemeBinding Light='#00AEFF', Dark='#A700F3'}"
+                                                 ItemsSource="{Binding ApplicationData}" XBindingPath="Name" EnableAnimation="True"  YBindingPath="Popularity" 
+                                                 CornerRadius="{Binding CornerRadius, Source={x:Reference column}}" Width="0.6"
+                                                 Spacing="0.2" ShowDataLabels="{OnPlatform Default=True,Android=False,iOS=False}">
+                    <local:SfNeumorphismColumnSeries.DataLabelSettings>
+                        <chart:CartesianDataLabelSettings LabelPlacement="Inner" UseSeriesPalette="False">
+                            <chart:CartesianDataLabelSettings.LabelStyle>
+                                <chart:ChartDataLabelStyle Background="Transparent" LabelFormat="0'%" TextColor="#EEEEEE" FontAttributes="Bold" FontSize="10"/>
+                            </chart:CartesianDataLabelSettings.LabelStyle>
+                        </chart:CartesianDataLabelSettings>
+                    </local:SfNeumorphismColumnSeries.DataLabelSettings>
+                </local:SfNeumorphismColumnSeries>
+            </chart:SfCartesianChart>
+        </Grid>
+    </local:SfNeumorphicContentView>
+
+</ContentPage>
