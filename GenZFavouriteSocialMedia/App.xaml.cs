@@ -1,11 +1,16 @@
-﻿namespace GenZFavouriteSocialMedia
+﻿
+namespace GenZFavouriteSocialMedia
 {
     public partial class App : Application
     {
         public App()
         {
             InitializeComponent();
-            Windows[0].Page = new MainPage();
+        }
+
+        protected override Window CreateWindow(IActivationState? activationState)
+        {
+            return new Window(new MainPage());
         }
     }
 }
