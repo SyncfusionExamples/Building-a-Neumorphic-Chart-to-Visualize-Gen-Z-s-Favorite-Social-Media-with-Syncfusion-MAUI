@@ -72,16 +72,13 @@ namespace GenZFavouriteSocialMedia
 
         public void Draw(ICanvas canvas, RectF dirtyRect)
         {
-            OnDraw(canvas, dirtyRect);
-        }
-
-        private void OnDraw(ICanvas canvas, RectF dirtyRect)
-        {
             var paddingRect = new RectF() { Left = dirtyRect.Left + (float)Padding.Left, Top = dirtyRect.Top + (float)Padding.Top, Right = dirtyRect.Right - (float)Padding.Right, Bottom = dirtyRect.Bottom - (float)Padding.Bottom };
             double cornerRadius = CornerRadius.TopLeft > paddingRect.Width / 2 ? paddingRect.Width / 2 : CornerRadius.TopLeft;
+            //To create the Background and Shadow effect
             canvas.SetShadow(ShadowOffset, ShadowBlur, ShadowColor.WithAlpha(0.5f));
             canvas.SetFillPaint(Background, paddingRect);
             canvas.FillRoundedRectangle(paddingRect, cornerRadius);
+            //To create the stroke effect for the content view
             var strokeRect = new RectF() { Left = paddingRect.Left - StrokeWidth / 2, Top = paddingRect.Top - StrokeWidth / 2, Right = paddingRect.Right + StrokeWidth / 2, Bottom = paddingRect.Bottom + StrokeWidth / 2 };
             canvas.StrokeColor = Stroke.Color;
             canvas.StrokeSize = StrokeWidth;
