@@ -65,7 +65,7 @@
             <GradientStop Color="#D7DEED" Offset="1.0" />
         </LinearGradientBrush>
 
-        <local:SfNeumorphismDrawer x:Name="outer" Padding="40" Background="{AppThemeBinding Light='#EBECF0', Dark='#212121'}" Stroke="{AppThemeBinding Light='#F8FAFD', Dark='#6E00B0'}" StrokeWidth="5" ShadowColor="{AppThemeBinding Light=Gray,Dark='#3A3A3A90'}" ShadowOffset="5,5" CornerRadius="20" ShadowBlur="5" x:Key="outerView"/>
+        <local:SfNeumorphismDrawer x:Name="outer" Padding="{OnPlatform Default=40,iOS=20}" Background="{AppThemeBinding Light='#EBECF0', Dark='#212121'}" Stroke="{AppThemeBinding Light='#F8FAFD', Dark='#6E00B0'}" StrokeWidth="5" ShadowColor="{AppThemeBinding Light=Gray,Dark='#3A3A3A90'}" ShadowOffset="5,5" CornerRadius="20" ShadowBlur="5" x:Key="outerView"/>
         <local:SfNeumorphismDrawer x:Name="title" Padding="5,5,5,5" Background="{AppThemeBinding Light={StaticResource LightTitleBackground},Dark={StaticResource DarkTitleBackground}}" ShadowColor="{AppThemeBinding Light=Gray,Dark='#101113'}" Stroke="{AppThemeBinding Light='#F8FAFD', Dark='#252E3D'}" StrokeWidth="{AppThemeBinding Light=2,Dark=1}" ShadowOffset="{AppThemeBinding Light='2,2',Dark='1,1'}" CornerRadius="12" ShadowBlur="5" x:Key="titleView"/>
         <local:SfNeumorphismDrawer x:Name="column" Background="{AppThemeBinding Light={StaticResource LightSeriesBackground},Dark={StaticResource DarkSeriesGradient}}" CornerRadius="25" StrokeWidth="0" x:Key="columndrawer"/>
     </ContentPage.Resources>
