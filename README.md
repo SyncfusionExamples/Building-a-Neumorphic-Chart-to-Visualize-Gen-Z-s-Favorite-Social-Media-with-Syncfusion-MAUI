@@ -39,4 +39,4 @@ If you encounter a Path Too Long Exception while building the project:
   3. Rebuild the project.
 
 ## For a step-by-step procedure
-Refer to the blog, ["Visualizing Gen Z's Favorite Social Media Platforms with a Neumorphic UI in .NET MAUI"]() for detailed instructions and code examples.
+Refer to the blog, ["Visualizing Gen Z's Favorite Social Media Platforms with a Neumorphic UI in .NET MAUI"](https://www.syncfusion.com/blogs/post/neumorphic-ui-net-maui-column-chart) for detailed instructions and code examples.
